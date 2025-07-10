@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMO Matchmaking Client</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>🎮 MMO Matchmaking</h1>
+      <p>Test client for real-time game matchmaking</p>
+    </header>
+
+    <div class="grid">
+      <!-- Connection Section -->
+      <div class="card">
+        <h3>
+          <span class="icon">🔗</span>
+          Connection
+        </h3>
+        <div id="connectionStatus" class="status-indicator disconnected">
+          Disconnected
+        </div>
+        <div class="button-group">
+          <button id="connectBtn">
+            <span>Connect</span>
+          </button>
+          <button id="disconnectBtn" disabled>
+            <span>Disconnect</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Player Setup Section -->
+      <div class="card">
+        <h3>
+          <span class="icon">👤</span>
+          Player Setup
+        </h3>
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="playerName" 
+            placeholder="Enter your username" 
+            value="TestPlayer"
+          />
+        </div>
+        <div class="form-group">
+          <select id="gameMode">
+            <option value="fps">🎯 First Person Shooter</option>
+            <option value="chess">♟️ Chess</option>
+            <option value="moba">⚔️ MOBA</option>
+            <option value="rts">🏰 Real-Time Strategy</option>
+          </select>
+        </div>
+        <div id="playerInfo" class="player-info" style="display: none;">
+          <strong>Player ID:</strong> <span id="playerId"></span>
+        </div>
+        <button id="createPlayerBtn">
+          <span>Create Player</span>
+        </button>
+      </div>
+
+      <!-- Matchmaking Section -->
+      <div class="card">
+        <h3>
+          <span class="icon">🎲</span>
+          Matchmaking
+        </h3>
+        <div id="queueStatus" class="status-indicator">
+          Not in queue
+        </div>
+        <div class="button-group">
+          <button id="joinQueueBtn" disabled>
+            <span>Join Queue</span>
+          </button>
+          <button id="leaveQueueBtn" disabled>
+            <span>Leave Queue</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Game Actions Section -->
+      <div class="card">
+        <h3>
+          <span class="icon">🎮</span>
+          Game Actions
+        </h3>
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="gameId" 
+            placeholder="Game ID (auto-filled on match)" 
+            readonly
+          />
+        </div>
+        <div class="button-group">
+          <button id="sendActionBtn" disabled>
+            <span>Send Test Action</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity Log Section -->
+    <div class="card log-container">
+      <div class="log-header">
+        <h3>
+          <span class="icon">📋</span>
+          Activity Log
+        </h3>
+        <button id="clearLogBtn" class="clear-btn">
+          <span>Clear</span>
+        </button>
+      </div>
+      <div id="log" class="log"></div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+/* App Container */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Card Styles */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card h3 .icon {
+  font-size: 1.2rem;
+}
+
+/* Status Indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.status-indicator::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  margin-right: 8px;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.connected {
+  background: #48bb78;
+  color: white;
+}
+
+.status-indicator.disconnected {
+  background: #f56565;
+  color: white;
+}
+
+.status-indicator.queue {
+  background: #ed8936;
+  color: white;
+}
+
+.status-indicator.in-game {
+  background: #9f7aea;
+  color: white;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 16px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input[readonly] {
+  background: #f7fafc;
+  color: #4a5568;
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 2px;
+  font-family: inherit;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Player Info */
+.player-info {
+  background: #f7fafc;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border-left: 4px solid #667eea;
+  font-size: 0.9rem;
+}
+
+/* Log Container */
+.log-container {
+  grid-column: 1 / -1;
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.clear-btn {
+  background: #e53e3e;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background: #c53030;
+  box-shadow: 0 4px 20px rgba(229, 62, 62, 0.4);
+}
+
+.log {
+  background: #1a202c;
+  color: #e2e8f0;
+  padding: 16px;
+  border-radius: 12px;
+  height: 300px;
+  overflow-y: auto;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  border: 1px solid #4a5568;
+}
+
+.log::-webkit-scrollbar {
+  width: 8px;
+}
+
+.log::-webkit-scrollbar-track {
+  background: #2d3748;
+  border-radius: 4px;
+}
+
+.log::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 4px;
+}
+
+.log::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+.log-entry {
+  margin-bottom: 6px;
+  padding: 2px 0;
+  word-wrap: break-word;
+}
+
+.log-entry .timestamp {
+  color: #a0aec0;
+  margin-right: 8px;
+  font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 16px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .log-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .button-group {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .header p {
+    font-size: 1rem;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
